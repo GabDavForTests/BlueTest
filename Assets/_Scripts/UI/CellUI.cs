@@ -6,10 +6,8 @@ using UnityEngine.UI;
 public class CellUI : MonoBehaviour
 {
     public Image cellImage;
-    private ItemList id;
-    public void UpdateCellImage(Sprite sprite, ItemList newId)
+    public void UpdateCellImage(Sprite sprite)
     {
         cellImage.sprite = sprite;
-        id = newId;
     }
 }

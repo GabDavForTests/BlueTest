@@ -5,7 +5,10 @@ using UnityEngine;
 public class CharacterAnimation : MonoBehaviour
 {
     private Animator _anim;
-
+    private Vector2 _previousMovementValue;
+    private const string HORIZONTAL = "Horizontal";
+    private const string VERTICAL = "Vertical";
+    private const string SPEED = "Speed";
     private void Awake()
     {
         _anim = GetComponent<Animator>();
@@ -18,8 +21,17 @@ public class CharacterAnimation : MonoBehaviour
     {
         if (_anim == null)
             return;
-        _anim.SetFloat("Horizontal", val.x);
-        _anim.SetFloat("Vertical", val.y);
-        _anim.SetFloat("Speed", speed);
+        if(val.x == 0 && val.y == 0)
+        {
+            _anim.SetFloat(HORIZONTAL, _previousMovementValue.x);
+            _anim.SetFloat(VERTICAL, _previousMovementValue.y);
+        }
+        else
+        {
+            _anim.SetFloat(HORIZONTAL, val.x);
+            _anim.SetFloat(VERTICAL, val.y);
+            _previousMovementValue = val;
+        }
+        _anim.SetFloat(SPEED, speed);
     }
 }

@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemIcon: {fileID: -1924513970, guid: 1f733c5a901975248939290c09ad32b3, type: 3}
-  spriteSheet: {fileID: 2800000, guid: 1f733c5a901975248939290c09ad32b3, type: 3}

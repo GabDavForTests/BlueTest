@@ -8,7 +8,6 @@ public class Item : ScriptableObject
 {
     public ItemList itemType;
     public Sprite itemIcon;
-    public Texture2D spriteSheet;
 }
 public enum ItemList
 {

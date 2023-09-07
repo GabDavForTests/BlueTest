@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InventoryUI : MonoBehaviour
+public abstract class InventoryUI : MonoBehaviour
 {
     public CellUI itemSlotTemplate;
     public Transform itemSlotContainer;
-    private Inventory _inventory;
+    protected Inventory _inventory;
     private void OnEnable()
     {
         RefreshInventory();
@@ -32,8 +33,10 @@ public class InventoryUI : MonoBehaviour
         foreach (Item item in _inventory.GetItemList()) 
         {
             CellUI newItemSlot = Instantiate(itemSlotTemplate.gameObject, itemSlotContainer).GetComponent<CellUI>();
-            newItemSlot.UpdateCellImage(item.itemIcon, item.itemType);
+            newItemSlot.UpdateCellImage(item.itemIcon);
             newItemSlot.gameObject.SetActive(true);
+            newItemSlot.GetComponent<Button>().onClick.AddListener(() => { OnButtonClick(item); });
         }
     }
+    public abstract void OnButtonClick(Item item);
 }

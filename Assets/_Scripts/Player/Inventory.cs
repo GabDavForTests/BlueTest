@@ -19,6 +19,12 @@ public class Inventory
     }
     public void AddItem(Item item)
     {
+        if (_items.Contains(item))
+            return; //Unique items only for this test
         _items.Add(item);
+    }
+    public void RemoveItem(Item item)
+    {
+        _items.Remove(item);
     }
 }
