@@ -6,21 +6,39 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     public GameObject chatBubble;
+    private Shop shop;
+    private void Awake()
+    {
+        shop = GetComponent<Shop>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            chatBubble.SetActive(true);
-            Player.OnPlayerCloseToNPC?.Invoke();
+            TriggerChatBubble(true);
+            Player.OnNpcProximity?.Invoke(true);
+            SetShop(true);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            chatBubble.SetActive(false);
-            Player.OnPlayerLeaveNPC?.Invoke();
-
+            TriggerChatBubble(false);
+            Player.OnNpcProximity?.Invoke(false);
+            SetShop(false);
         }
+    }
+    private void TriggerChatBubble(bool trigger)
+    {
+        if (chatBubble == null)
+            return;
+        chatBubble.SetActive(trigger);
+    }
+    private void SetShop(bool trigger)
+    {
+        if (shop == null)
+            return;
+        shop.CanShop(trigger);
     }
 }

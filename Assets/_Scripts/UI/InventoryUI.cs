@@ -32,7 +32,7 @@ public class InventoryUI : MonoBehaviour
         foreach (Item item in _inventory.GetItemList()) 
         {
             CellUI newItemSlot = Instantiate(itemSlotTemplate.gameObject, itemSlotContainer).GetComponent<CellUI>();
-            newItemSlot.UpdateCellImage(item.itemIcon);
+            newItemSlot.UpdateCellImage(item.itemIcon, item.itemType);
             newItemSlot.gameObject.SetActive(true);
         }
     }

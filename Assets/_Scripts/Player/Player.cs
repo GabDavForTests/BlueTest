@@ -5,22 +5,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Action OnPlayerCloseToNPC;
-    public static Action OnPlayerLeaveNPC;
+    public static Action<bool> OnNpcProximity;
     public static Action<Inventory> OnOpenInventory;
     public Item TestItem;
     private Inventory _inventory;
     private void Awake()
     {
         _inventory = new Inventory();
-        _inventory.AddItem(TestItem);
     }
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            OnOpenInventory?.Invoke(_inventory);
-
-        }
+        InputManager.OnInventoryButton += OpenInventory;
+    }
+    private void OpenInventory()
+    {
+         OnOpenInventory?.Invoke(_inventory);
     }
 }

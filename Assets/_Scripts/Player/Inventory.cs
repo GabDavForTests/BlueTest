@@ -13,6 +13,10 @@ public class Inventory
     {
         return _items;
     }
+    public void SetItemList(List<Item> newItemList)
+    {
+        _items = new(newItemList);
+    }
     public void AddItem(Item item)
     {
         _items.Add(item);
