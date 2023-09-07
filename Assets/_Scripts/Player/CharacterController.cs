@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class CharacterController : MonoBehaviour
 {
     public float speed = 2f;
     public CharacterAnimation characterAnimation;
+
     private Rigidbody2D _rb;
 
     private Vector2 _movement;

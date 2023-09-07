@@ -11,6 +11,7 @@ public class NPC : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             chatBubble.SetActive(true);
+            Player.OnPlayerCloseToNPC?.Invoke();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -18,6 +19,8 @@ public class NPC : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             chatBubble.SetActive(false);
+            Player.OnPlayerLeaveNPC?.Invoke();
+
         }
     }
 }
