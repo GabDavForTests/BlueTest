@@ -6,11 +6,11 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     public ShopInventory inv;
-    private bool readyToShop = false;
     public static Action<Inventory> OnShopOpen;
+    private bool _readyToShop = false;
     public void CanShop(bool trigger)
     {
-        readyToShop = trigger;
+        _readyToShop = trigger;
     }
     private void Start()
     {
@@ -19,7 +19,7 @@ public class Shop : MonoBehaviour
 
     private void OpenShop()
     {
-        if (readyToShop)
+        if (_readyToShop)
         {
             Inventory newInventory = new Inventory();
             newInventory.SetItemList(inv.availableItems);

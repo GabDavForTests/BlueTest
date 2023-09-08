@@ -6,10 +6,10 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     public GameObject chatBubble;
-    private Shop shop;
+    private Shop _shop;
     private void Awake()
     {
-        shop = GetComponent<Shop>();
+        _shop = GetComponent<Shop>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -37,8 +37,8 @@ public class NPC : MonoBehaviour
     }
     private void SetShop(bool trigger)
     {
-        if (shop == null)
+        if (_shop == null)
             return;
-        shop.CanShop(trigger);
+        _shop.CanShop(trigger);
     }
 }
